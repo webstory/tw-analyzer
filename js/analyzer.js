@@ -7,6 +7,51 @@ function load_sample() {
     window.all_range = data;
     window.daily = _(data).groupBy(function(d) { return parseInt(d.time / (86400)); }).values().value();
     window.weekly = _(data).groupBy(function(d) { return parseInt(d.time / (86400 * 7)); }).values().value();
+
+    $(document).trigger("data_loaded");
+  });
+}
+
+$(document).on('data_loaded', function() {
+  update_tweets_frequency();
+});
+
+function update_tweets_frequency() {
+  var dates = _.map(window.daily, function(d) { return new Date(d[0].time * 1000); });
+  var tws1 = _.map(window.daily, function(d) { return [d[0].time * 1000, d.length]; });
+  var tws2 = _.map(window.weekly, function(d) { return [d[0].time * 1000, d.length]; });
+
+
+  $("#tweets-frequency").highcharts({
+    chart: {
+      type: 'spline',
+      zoomType: 'x'
+    },
+    title: "Tweets frequency",
+    xAxis: {
+      type: 'date',
+      labels: {
+        format:"{value:%Y-%m-%d}"
+      },
+      categories: dates,
+      title: { text: null }
+    },
+    yAxis: {
+
+    },
+    legend: {
+      layout: 'horizontal',
+      align: 'top',
+      verticalAlign: 'top',
+      borderWidth: 0
+    },
+    series: [{
+      name: 'Daily Tweets',
+      data: tws1
+    },{
+      name: 'Weekly Tweets',
+      data: tws2
+    }]
   });
 }
 

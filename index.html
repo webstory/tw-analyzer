@@ -38,6 +38,16 @@
               <li>Topic: Begin Again</li>
               <li>Crawl start date: 2014-08-13</li>
               <li>Crawl end date: 2014-10-12</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <span class="panel-title">Tweets frequency</span>
+          </div>
+          <div class="panel-body">
+            <div id="tweets-frequency"></div>
+
           </div>
         </div>
 
@@ -60,7 +70,7 @@
                 <button class="btn btn-primary pull-right btn-sm" onclick="all_range_word_appears()">Run</button>
               </div>
               <div class="panel panel-body">
-                <h4>Click column to sort by column</h4>
+                <h4>열 제목을 클릭해서 정렬하세요.</h4>
                 <table class="table table-striped sortable">
                   <thead>
                     <tr><th>Rank</th><th>Word</th><th>First appear</th><th>Appears</th></tr>
@@ -72,10 +82,10 @@
             </div>
             <div class="panel panel-default">
               <div class="panel-heading">
-                <span class="panel-title">Groups (People who wants to bind same group is put in comma-separated)</span>
+                <span class="panel-title">Word Frequency Chart</span>
               </div>
               <div class="panel panel-body">
-                <div class="row" id="character_groups1">
+                <div class="row" id="word_frequency_chart">
                 </div>
               </div>
             </div>
@@ -154,6 +164,8 @@
   <script src="js/bootstrap-sortable.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/2.1.1/math.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
   <script src="js/controller.js"></script>
   <script src="js/analyzer.js"></script>
 </body>
