@@ -1,23 +1,5 @@
 /* global math */
 'use strict';
-var module = this;
-
-var Scene = function(title) {
-  this.title = ""+title;
-  this.characters = [];
-  this.dialogs = {};
-  this.action_script = "";
-
-  this.add_character = function(character) {
-    if(!!character && character.match(/\S+/).length >= 1) {
-      if(!_.contains(this.characters, character)) {
-        this.characters.push(character.trim());
-        this.dialogs[character] = 0;
-      }
-    }
-  };
-};
-
 
 function load_sample() {
   $.getJSON("beginagain.json", function(data) {
@@ -43,13 +25,18 @@ function word_count(tws, top_n) {
     .pairs()
     .sortBy(function(n) {return n[1];})
     .reverse()
+    .drop(1)   // Rank 1 is always empty string
     .take(top_n)
     .value();
 }
 
 function first_appear(tws, word) {
   return _.find(tws, function(tw) {
-    return _.includes(tw.text.toLowerCase(), word.toLowerCase());
+    if(_.isString(tw.text) && _.isString(word)) {
+      return _.includes(tw.text.toLowerCase(), word.toLowerCase());
+    } else {
+      return false;
+    }
   });
 }
 
@@ -59,6 +46,34 @@ function word_appear_tweet_count(tws, word) {
     return _.includes(tw.text.toLowerCase(), word.toLowerCase());
   }).length;
 }
+
+
+
+
+
+
+
+function all_range_word_appears() {
+  var target = $("#all_range_word_appears");
+
+  var words = word_count(window.all_range, 500);
+  var rank = 0;
+
+  _.each(words, function(w) {
+    rank = rank + 1;
+    var tw_f = first_appear(window.all_range, w[0]);
+    var appear = "-";
+    if(tw_f) {
+      appear = new Date(tw_f.time * 1000).toISOString().split("T")[0];
+    }
+
+    $("<tr><td>"+rank+"</td><td>"+w[0]+"</td><td data-dateformat='YYYY-MM-DD'>"+appear+"</td><td>"+w[1]+"</td></tr>")
+      .appendTo(target);
+  });
+
+  $.bootstrapSortable(true);
+}
+
 
 ///////////////////////////////////////////////////////////////////
 // CHARACTERS TAB

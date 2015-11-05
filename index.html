@@ -9,6 +9,7 @@
   <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css"/>
   <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
   <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"/>
+  <link type="text/css" rel="stylesheet" href="css/bootstrap-sortable.css"/>
   <link type="text/css" rel="stylesheet" href="css/style.css"/>
 
 </head>
@@ -53,13 +54,20 @@
         <!-- Tab panes -->
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="all_range">
-            <h1>Characters</h1>
             <div class="panel panel-default">
               <div class="panel-heading">
-                <span class="panel-title">Script1 All characters(Sorted by listen degree)</span>
+                <span class="panel-title">Top 500 words</span>
+                <button class="btn btn-primary pull-right btn-sm" onclick="all_range_word_appears()">Run</button>
               </div>
               <div class="panel panel-body">
-                <div id="all_characters1"></div>
+                <h4>Click column to sort by column</h4>
+                <table class="table table-striped sortable">
+                  <thead>
+                    <tr><th>Rank</th><th>Word</th><th>First appear</th><th>Appears</th></tr>
+                  </thead>
+                  <tbody id="all_range_word_appears">
+                  </tbody>
+                </table>
               </div>
             </div>
             <div class="panel panel-default">
@@ -142,20 +150,11 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="js/moment.min.js"></script>
+  <script src="js/bootstrap-sortable.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/2.1.1/math.min.js"></script>
   <script src="js/controller.js"></script>
   <script src="js/analyzer.js"></script>
-
-  <script>
-  var daily = 86400;
-  var weekly = 604800;
-  var start = 1407855600;
-  var end = 1413126000;
-
-  window.word_count = word_count;
-
-  </script>
-
 </body>
 </html>
