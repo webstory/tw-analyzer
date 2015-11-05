@@ -47,7 +47,6 @@
           </div>
           <div class="panel-body">
             <div id="tweets-frequency"></div>
-
           </div>
         </div>
 
@@ -59,6 +58,7 @@
       <div class="col-md-7">
         <ul class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active" id="all_range_tab"><a href="#all_range" aria-controls="all_range" role="tab" data-toggle="tab">All range words</a></li>
+          <li role="presentation" id="weekly_tab"><a href="#weekly" aria-controls="weekly" role="tab" data-toggle="tab">Weekly</a></li>
           <li role="presentation" id="daily_tab"><a href="#daily" aria-controls="daily" role="tab" data-toggle="tab">Daily</a></li>
         </ul>
         <!-- Tab panes -->
@@ -67,7 +67,7 @@
             <div class="panel panel-default">
               <div class="panel-heading">
                 <span class="panel-title">Top 500 words</span>
-                <button class="btn btn-primary pull-right btn-sm" onclick="all_range_word_appears()">Run</button>
+                <button class="btn btn-primary pull-right btn-sm" onclick="all_range_run()">Run</button>
               </div>
               <div class="panel panel-body">
                 <h4>열 제목을 클릭해서 정렬하세요.</h4>
@@ -82,11 +82,10 @@
             </div>
             <div class="panel panel-default">
               <div class="panel-heading">
-                <span class="panel-title">Word Frequency Chart</span>
+                <span class="panel-title">Word Cloud</span>
               </div>
               <div class="panel panel-body">
-                <div class="row" id="word_frequency_chart">
-                </div>
+                <canvas id="word_cloud1" width="500" height="300"></canvas>
               </div>
             </div>
             <div class="panel panel-default">
@@ -108,7 +107,11 @@
             </div>
             <button id="matrix_tab" class="btn btn-primary" onclick="matrix_tab.update(); $('#matrix_tab a').trigger('click');">Next &gt;&gt;</button>
           </div>
-          <div role="tabpanel" class="tab-pane" id="matrix">
+
+          <div role="tabpanel" class="tab-pane" id="weekly">
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="daily">
             <h1>Matrix</h1>
             <div class="row">
               <label class="col-md-6">Contrast
@@ -166,6 +169,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/2.1.1/math.min.js"></script>
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="js/wordcloud2.js"></script>
   <script src="js/controller.js"></script>
   <script src="js/analyzer.js"></script>
 </body>

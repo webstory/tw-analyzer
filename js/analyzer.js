@@ -1,6 +1,18 @@
 /* global math */
 'use strict';
 
+function all_range_run() {
+  all_range_word_appears();
+
+  var wordList = _.map(word_count(window.all_range, 500), function(d) { return [d[0], d[1]/10]; });
+
+  WordCloud($('#word_cloud1')[0], {
+    list: wordList,
+    minSize: 5,
+    clearCanvas:true
+  });
+}
+
 function load_sample() {
   $.getJSON("beginagain.json", function(data) {
     // Split daily and weekly
