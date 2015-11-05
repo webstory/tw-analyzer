@@ -1,0 +1,59 @@
+/* Main app style */
+body {
+}
+
+.cm-sceneheading {font-size:x-large; background-color: #ddd;}
+.cm-action {background-color: #edd;}
+.cm-character {background-color: #ded;}
+.cm-dialogue {background-color: #dde;}
+.cm-parenthetical {background-color: #ede;}
+
+svg {
+  display: block;
+  width:100%;
+  height:100%;
+}
+
+.hovered {
+  border:1px solid red;
+}
+
+.character_matrix,.rating_matrix {
+
+}
+
+.character_matrix th,.rating_matrix th {
+  background-color:#ccc;
+}
+
+
+.character_matrix td,.rating_matrix td {
+  width:30px;
+  height:30px;
+
+  color:white;
+  font-size:x-small;
+}
+
+.rating_matrix input {
+  width:30px;
+  height:30px;
+
+  color:black;
+  font-size:small;
+  text-align:center;
+}
+
+tabset,tab {
+  min-height: 800px;
+}
+
+.tab-content .panel {
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.nopadding {
+  padding:0 !important;
+}
