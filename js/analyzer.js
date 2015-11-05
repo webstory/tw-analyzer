@@ -47,7 +47,18 @@ function word_count(tws, top_n) {
     .value();
 }
 
+function first_appear(tws, word) {
+  return _.find(tws, function(tw) {
+    return _.includes(tw.text.toLowerCase(), word.toLowerCase());
+  });
+}
 
+
+function word_appear_tweet_count(tws, word) {
+  return _.filter(tws, function(tw) {
+    return _.includes(tw.text.toLowerCase(), word.toLowerCase());
+  }).length;
+}
 
 ///////////////////////////////////////////////////////////////////
 // CHARACTERS TAB
