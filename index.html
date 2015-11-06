@@ -59,10 +59,13 @@
         <ul class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active" id="all_range_tab"><a href="#all_range" aria-controls="all_range" role="tab" data-toggle="tab">All range words</a></li>
           <li role="presentation" id="weekly_tab"><a href="#weekly" aria-controls="weekly" role="tab" data-toggle="tab">Weekly</a></li>
+          <!--
           <li role="presentation" id="daily_tab"><a href="#daily" aria-controls="daily" role="tab" data-toggle="tab">Daily</a></li>
+          -->
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
+          <!-- All_range Tab -->
           <div role="tabpanel" class="tab-pane active" id="all_range">
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -88,70 +91,38 @@
                 <canvas id="word_cloud1" width="500" height="300"></canvas>
               </div>
             </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <span class="panel-title">Script2 All characters(Sorted by listen degree)</span>
-              </div>
-              <div class="panel panel-body">
-                <div id="all_characters2"></div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <span class="panel-title">Groups (People who wants to bind same group is put in comma-separated)</span>
-              </div>
-              <div class="panel panel-body">
-                <div class="row" id="character_groups2">
-                </div>
-              </div>
-            </div>
-            <button id="matrix_tab" class="btn btn-primary" onclick="matrix_tab.update(); $('#matrix_tab a').trigger('click');">Next &gt;&gt;</button>
           </div>
 
+          <!-- Weekly Tab -->
           <div role="tabpanel" class="tab-pane" id="weekly">
+            <div class="row">
+              <label class="col-md-12">Word
+                <input id="weekly_search_word" type="text" value="비긴어게인"/>
+                <button class="btn btn-primary btn-sm" onclick="weekly_run()">
+                  <i class="fa fa-search"></i>Search
+                </button>
+              </label>
+            </div>
+
+            <div class="row">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <span class="panel-title">Tweets frequency</span>
+                </div>
+                <div class="panel-body">
+                  <div id="weekly-tweets-frequency"></div>
+                </div>
+              </div>
+
+            </div>
           </div>
 
+          <!-- Daily Tab -->
           <div role="tabpanel" class="tab-pane" id="daily">
-            <h1>Matrix</h1>
             <div class="row">
-              <label class="col-md-6">Contrast
-                <input id="contrast" type="range" min="1000" max="10000" value="2000" onInput="matrix_tab.update()"/>
+              <label class="col-md-6">Day
+                <input id="daily_slider" type="range" min="1" max="1" value="1" onInput="daily_tab_update()"/>
               </label>
-              <label class="col-md-6">
-                <input type="checkbox" onClick="toggleCombine();"/> Combined
-              </label>
-            </div>
-            <div class="row">
-              <div class="panel panel-warning">
-                <div class="panel panel-heading">Heat map</div>
-                <div class="panel panel-body">
-                  <div class="combined col-md-6">
-                    <h4>Script 1</h4>
-                    <table id="character_matrix1" class="table-bordered table-condensed character_matrix">
-                    </table>
-                  </div>
-                  <div class="combined col-md-6">
-                    <h4>Script 2</h4>
-                    <table id="character_matrix2" class="table-bordered table-condensed character_matrix">
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="panel panel-warning">
-                  <div class="panel panel-heading">Similarity</div>
-                  <div class="panel panel-body">
-                    <div class="col-md-12">
-                      <h4>&nbsp;</h4>
-                      <table id="character_difference_matrix" class="table-bordered table-condensed character_matrix">
-                      </table>
-                    </div>
-                    <span class="h1 text-center" id="matrix_similarity"></span>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
