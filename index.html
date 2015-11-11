@@ -59,6 +59,7 @@
         <ul class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active" id="all_range_tab"><a href="#all_range" aria-controls="all_range" role="tab" data-toggle="tab">All range words</a></li>
           <li role="presentation" id="weekly_tab"><a href="#weekly" aria-controls="weekly" role="tab" data-toggle="tab">Weekly</a></li>
+          <li role="presentation" id="neighbor_words_tab"><a href="#neighbor" aria-controls="neighbor" role="tab" data-toggle="tab">Neighbor words</a></li>
           <!--
           <li role="presentation" id="daily_tab"><a href="#daily" aria-controls="daily" role="tab" data-toggle="tab">Daily</a></li>
           -->
@@ -125,6 +126,22 @@
               </label>
             </div>
           </div>
+
+          <!-- Neighbor words Tab -->
+          <div role="tabpanel" class="tab-pane" id="neighbor">
+            <div class="row">
+              <label class="col-md-12">Word
+                <input id="neighbor_search_word" type="text" value="비긴어게인"/>
+                <button class="btn btn-primary btn-sm" onclick="neighbor_run()">
+                  <i class="fa fa-search"></i>Search
+                </button>
+              </label>
+            </div>
+            <div class="row">
+              <div id="words-neighbor"></div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

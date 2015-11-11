@@ -185,3 +185,60 @@ function weekly_tab_update() {
   });
 
 }
+
+
+
+
+
+
+function neighbor_run() {
+  var source = window.all_range;
+  var search = $("#neighbor_search_word").val().toLowerCase();
+
+  var filtered = _.filter(source, function(tw) {
+    return _.contains(tw.text.toLowerCase(), search);
+  });
+
+  var words = {};
+
+  _.each(filtered, function(tw) {
+    var arr = tw.text.toLowerCase().split(/[,.!@#$%^&*\n ]/);
+    var index = _.indexOf(arr, search);
+
+    for(var i=-20; i<=20; i++) {
+      var w = arr[index+i];
+
+      if(w && i != 0) {
+        words[w] = (words[w] || 0) + (1/(i*i));
+      }
+    }
+  });
+
+  var result = _(words)
+    .pairs()
+    .sortBy(function(n) {return n[1];})
+    .reverse()
+    .take(20)
+    .value();
+
+  $("#words-neighbor").highcharts({
+    chart: {
+      type: 'bar',
+      zoomType: 'x'
+    },
+    title: "Neighbor words",
+    xAxis: {
+      categories: _.map(result, function(n) { return n[0]; }),
+      title: { text: null }
+    },
+    yAxis: {
+
+    },
+    legend: {
+      enabled: false
+    },
+    series: [{
+      data: result
+    }]
+  });
+}
