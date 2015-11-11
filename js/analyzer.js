@@ -205,11 +205,13 @@ function neighbor_run() {
     var arr = tw.text.toLowerCase().split(/[,.!@#$%^&*\n ]/);
     var index = _.indexOf(arr, search);
 
-    for(var i=-20; i<=20; i++) {
-      var w = arr[index+i];
+    if(index >= 0) {
+      for(var i=-20; i<=20; i++) {
+        var w = arr[index+i];
 
-      if(w && i != 0) {
-        words[w] = (words[w] || 0) + (1/(i*i));
+        if(w && i != 0) {
+          words[w] = (words[w] || 0) + (1/(i*i));
+        }
       }
     }
   });
