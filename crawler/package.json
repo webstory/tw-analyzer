@@ -1,0 +1,18 @@
+{
+  "name": "crawler",
+  "version": "0.0.0",
+  "description": "Twitter semi-automatic crawler",
+  "main": "parseraw.js",
+  "dependencies": {
+    "jquery-xpath": "~0.3.1",
+    "lodash": "~3.10.1",
+    "mongo": "~0.1.0",
+    "jquery": "~2.1.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hoya Kim",
+  "license": "MIT"
+}
